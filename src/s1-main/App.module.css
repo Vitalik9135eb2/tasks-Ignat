@@ -1,0 +1,16 @@
+.App {
+    --header_height: 60px;
+}
+
+.hw {
+    border-bottom: 0.0625rem solid #D9D9D9;
+    border-top: 0.0625rem solid #D9D9D9;
+    padding: 1.5rem 4.375rem 2rem ;
+}
+
+.hwTitle {
+    font-size: 1.75rem;
+    line-height: 1.625rem;
+    font-weight: 600;
+    margin: 2.375rem  4.375rem 0.625rem;
+}
