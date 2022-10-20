@@ -27,7 +27,6 @@ type ObjType ={
 
 // нужно отобразить приходящие данные
 const Message = (props: MessagePropsType) => {
-    console.log(props.message.id)
     return (
         <div id={'hw1-message-' + props.message.id} className={s.message}>
             <div className={s.imageAndText}>
