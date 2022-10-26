@@ -3,7 +3,7 @@ import s from './Greeting.module.css'
 
 type GreetingPropsType = {
     name: any // need to fix any
-    setNameCallback: any // need to fix any
+    setNameCallback: (e: string) => void // need to fix any
     addUser: any // need to fix any
     onBlur: any // need to fix any
     onEnter: any // need to fix any
@@ -27,6 +27,16 @@ const Greeting: React.FC<GreetingPropsType> = (
 ) => {
     const inputClass = s.errorInput // need to fix with (?:)
 
+    const changeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setNameCallback(event.currentTarget.value)
+    }
+
+    const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+
+        }
+    }
+
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
             <div className={s.text}>
@@ -41,9 +51,11 @@ const Greeting: React.FC<GreetingPropsType> = (
                     <input
                         id={'hw3-input'}
                         value={name}
-                        onChange={setNameCallback}
+                        // onChange={setNameCallback}
+                        onChange={changeInputHandler}
                         className={inputClass}
-                        onKeyDown={onEnter}
+                        // onKeyDown={onEnter}
+                        onKeyDown={onKeyDownHandler}
                         onBlur={onBlur}
                     />
                     <div id={'hw3-error'} className={s.error}>
