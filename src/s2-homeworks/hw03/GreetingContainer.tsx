@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
+import React, {ChangeEvent, Dispatch, KeyboardEvent, SetStateAction, useState} from 'react'
 import Greeting from './Greeting'
 import {UserType} from './HW3'
 import user from "../hw08/User";
@@ -8,8 +8,13 @@ type GreetingContainerPropsType = {
     addUserCallback: (name: string) => void // need to fix any
 }
 
+type SetStateType<T = string> = Dispatch<SetStateAction<T>>
 
-export const pureAddUser = (name: string, setError:(error:string)=>void, setName: (name:string)=> void, addUserCallback:(name:string)=>void) => {
+export const pureAddUser = (name: string,
+                            setError: SetStateType,
+                            setName: SetStateType,
+                            addUserCallback: (name: string) => void,
+) => {
     if (name.length < 2) {
         setError("Ошибка! Введите имя!")
     } else {
