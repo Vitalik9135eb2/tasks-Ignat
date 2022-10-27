@@ -14,6 +14,7 @@ type GreetingPropsType = {
 
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
+
     {
         name,
         setNameCallback,
