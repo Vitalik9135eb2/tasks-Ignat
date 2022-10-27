@@ -2,14 +2,14 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
 
 type GreetingPropsType = {
-    name: any // need to fix any
+    name: string // need to fix any
     setNameCallback: (e: string) => void // need to fix any
-    addUser: any // need to fix any
-    onBlur: any // need to fix any
-    onEnter: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    addUser: () => void // need to fix any
+    onBlur: () => void // need to fix any
+    onEnter: (e: KeyboardEvent<HTMLInputElement>) => void
+    error: string // need to fix any
+    totalUsers: number // need to fix any
+    lastUserName?: string // need to fix any
 }
 
 // презентационная компонента (для верстальщика)
@@ -25,18 +25,15 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+    const inputClass = error ? s.errorInput : s.input // need to fix with (?:)
 
     const changeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setNameCallback(event.currentTarget.value)
     }
 
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
-
-        }
+        onEnter(event)
     }
-
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
             <div className={s.text}>
@@ -54,7 +51,6 @@ const Greeting: React.FC<GreetingPropsType> = (
                         // onChange={setNameCallback}
                         onChange={changeInputHandler}
                         className={inputClass}
-                        // onKeyDown={onEnter}
                         onKeyDown={onKeyDownHandler}
                         onBlur={onBlur}
                     />
@@ -69,7 +65,7 @@ const Greeting: React.FC<GreetingPropsType> = (
                     className={s.button}
                     disabled={!name.trim()}
                 >
-                    add
+                    Add
                 </button>
             </div>
 
