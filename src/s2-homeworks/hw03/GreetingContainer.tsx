@@ -14,6 +14,8 @@ export const pureAddUser = (name: string,
                             setError: SetStateType,
                             setName: SetStateType,
                             addUserCallback: (name: string) => void,
+
+
 ) => {
     if (name.length < 2) {
         setError("Ошибка! Введите имя!")
@@ -53,8 +55,8 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     const [name, setName] = useState<string>('') // need to fix any
     const [error, setError] = useState<string>('') // need to fix any
 
-    const setNameCallback = (e: string) => { // need to fix any
-        setName(e) // need to fix
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
+        setName(e.currentTarget.value) // need to fix
         error && setError('')
     }
     const addUser = () => {
