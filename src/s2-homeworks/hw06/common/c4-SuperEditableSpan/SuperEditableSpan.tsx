@@ -57,7 +57,6 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
     ) => {
         setEditMode(!editMode)
         // включить editMode при двойном клике // делают студенты
-
         onDoubleClick?.(e)
     }
 
