@@ -19,7 +19,6 @@ type DefaultSpanPropsType = DetailedHTMLProps<
 type SuperRadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
     options?: any[]
     onChangeOption?: (option: any) => void
-
     spanProps?: DefaultSpanPropsType // пропсы для спана
 }
 
@@ -35,29 +34,35 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
     ...restProps
 }) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
+        onChangeOption && onChangeOption(+e.currentTarget.value)
         // делают студенты
     }
+
 
     const finalRadioClassName = s.radio + (className ? ' ' + className : '')
     const spanClassName = s.span + (spanProps?.className ? ' ' + spanProps.className : '')
 
     const mappedOptions: any[] = options
         ? options.map((o) => (
-              <label key={name + '-' + o.id} className={s.label}>
-                  <input
-                      id={id + '-input-' + o.id}
-                      className={finalRadioClassName}
-                      type={'radio'}
-                      // name, checked, value делают студенты
 
-                      onChange={onChangeCallback}
-                      {...restProps}
-                  />
-                  <span
-                      id={id + '-span-' + o.id}
-                      {...spanProps}
-                      className={spanClassName}
-                  >
+            <label key={name + '-' + o.id} className={s.label}>
+                <input
+                    id={id + '-input-' + o.id}
+                    className={finalRadioClassName}
+                    type={'radio'}
+                    // name, checked, value делают студенты
+
+                    name={"radioName"}
+                    checked={ o.id === value } //1,
+                    value={o.id}
+                    onChange={onChangeCallback}
+                    {...restProps}
+                />
+                <span
+                    id={id + '-span-' + o.id}
+                    {...spanProps}
+                    className={spanClassName}
+                >
                       {o.value}
                   </span>
               </label>
