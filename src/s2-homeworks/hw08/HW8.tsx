@@ -49,9 +49,9 @@ const HW8 = () => {
     }
 
     const check18 = () => {
-        setPeople(
-            homeWorkReducer(initialPeople, {type: 'check', payload: 18})
-        ) // совершеннолетние
+        debugger
+        const newArr = homeWorkReducer(initialPeople, {type: 'check', payload: 18})
+        setPeople(newArr) // совершеннолетние
         setCurrentSort('18')
     }
 
