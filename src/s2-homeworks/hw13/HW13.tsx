@@ -51,6 +51,11 @@ const HW13 = () => {
                     setImage(error400)
                 } else if(e.response.status === 500){
                     setImage(error500)
+                } else{
+                    setImage(errorUnknown)
+                    setCode("Error")
+                    setText(e.message)
+                    setInfo(e.name)
                 }
 
                 setCode(e.response.status)
